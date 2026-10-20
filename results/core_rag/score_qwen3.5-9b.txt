@@ -1,0 +1,14 @@
+1825 scored answers from results_qwen3.5-9b_core_rag.jsonl
+
+outcome         abstained  correct  wrong
+qtype                                    
+barangay_count        1.2     98.8    0.0
+name_barangays        0.0     99.5    0.5
+province              0.0    100.0    0.0
+region                0.0    100.0    0.0
+unit_type             0.0    100.0    0.0
+
+barangay count within 10%: 98.8%
+named barangays: 1197 | real: 1195 (specific names: 1161) | wrong generic placeholder: 0 | real but in another town: 0 | not found anywhere: 2
+
+wrote results/core_rag/results_qwen3.5-9b_core_rag_scored.csv and results/core_rag/results_qwen3.5-9b_core_rag_handcheck.csv

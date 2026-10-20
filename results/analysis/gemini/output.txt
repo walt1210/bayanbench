@@ -1,0 +1,43 @@
+outcome         abstained  correct  outdated  wrong
+qtype                                              
+barangay_count        0.0     98.0       0.0    2.0
+name_barangays        0.5     51.7       0.0   47.8
+province              0.0    100.0       0.0    0.0
+region                0.0     97.5       2.5    0.0
+unit_type             0.0    100.0       0.0    0.0
+
+non-correct count and region answers:
+         lgu_name          qtype                                            answer                                                                               gold  outcome
+       Pigkawayan barangay_count                                                40                                                                                 28    wrong
+         Midsayap barangay_count                                                57                                                                                 44    wrong
+   City of Marawi barangay_count                                                96                                                                                101    wrong
+    City of Davao barangay_count                                               183                                                                                182    wrong
+       Ormoc City barangay_count                                               110                                                                                 85    wrong
+         Llorente barangay_count                                                12                                                                                 33    wrong
+          Pototan barangay_count                                               108                                                                                 50    wrong
+   City of Manila barangay_count                                               896                                                                                897    wrong
+          Indanan         region "Bangsamoro Autonomous Region in Muslim Mindanao"       Region 9 / Region IX / Region IX (Zamboanga Peninsula) / Zamboanga Peninsula outdated
+   Moises Padilla         region                                 "Western Visayas" NIR / Negros Island Region / Negros Island Region (NIR) / Region 18 / Region XVIII outdated
+        Hinigaran         region                                 "Western Visayas" NIR / Negros Island Region / Negros Island Region (NIR) / Region 18 / Region XVIII outdated
+             Jolo         region "Bangsamoro Autonomous Region in Muslim Mindanao"       Region 9 / Region IX / Region IX (Zamboanga Peninsula) / Zamboanga Peninsula outdated
+City of Escalante         region                                 "Western Visayas" NIR / Negros Island Region / Negros Island Region (NIR) / Region 18 / Region XVIII outdated
+       Binalbagan         region                                 "Western Visayas" NIR / Negros Island Region / Negros Island Region (NIR) / Region 18 / Region XVIII outdated
+          Candoni         region                                 "Western Visayas" NIR / Negros Island Region / Negros Island Region (NIR) / Region 18 / Region XVIII outdated
+            Basay         region                                 "Central Visayas" NIR / Negros Island Region / Negros Island Region (NIR) / Region 18 / Region XVIII outdated
+
+barangays by town size:
+  pop_quintile  named  specific  made_up  elsewhere  all_three_real  pct_specific  pct_made_up
+            1  231.0     153.0     36.0       30.0            34.2          66.2         15.6
+            2  243.0     167.0     22.0       35.0            49.4          68.7          9.1
+            3  234.0     173.0     27.0       29.0            44.9          73.9         11.5
+            4  246.0     194.0     17.0       20.0            61.0          78.9          6.9
+            5  240.0     193.0     14.0       20.0            68.8          80.4          5.8
+
+regression (one row per name):
+                        term  odds_ratio  or_low  or_high      p
+                      const      3.4784  2.6159   4.6254 0.0000
+population (+1 SD of log10)      1.3262  1.0908   1.6124 0.0046
+         Visayas (vs Luzon)      0.6892  0.4762   0.9975 0.0485
+        Mindanao (vs Luzon)      0.8088  0.5636   1.1608 0.2497
+
+accuracy by position in batch: {'1-8': 88.9, '9-16': 89.0, '17-25': 87.8}

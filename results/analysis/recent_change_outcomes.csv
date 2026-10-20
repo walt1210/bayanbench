@@ -1,0 +1,5 @@
+model,abstained,correct,outdated,unreadable,wrong
+gemma4-12b,4,37,8,0,19
+llama3.1-8b,0,27,22,1,18
+qwen3.5-9b,0,8,7,0,53
+sealion-v3-8b,2,22,18,0,26

@@ -1,0 +1,5 @@
+model,w_before,w_after
+gemma4-12b,13.5,100.0
+llama3.1-8b,23.0,100.0
+qwen3.5-9b,9.0,98.75
+sealion-v3-8b,13.25,100.0

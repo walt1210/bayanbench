@@ -1,0 +1,14 @@
+1825 scored answers from results_sealion-v3-8b_core_rag.jsonl
+
+outcome         abstained  correct  wrong
+qtype                                    
+barangay_count        0.0    100.0    0.0
+name_barangays        0.8     98.8    0.5
+province              0.0     99.7    0.3
+region                0.0    100.0    0.0
+unit_type             0.0    100.0    0.0
+
+barangay count within 10%: 100.0%
+named barangays: 1191 | real: 1189 (specific names: 1134) | wrong generic placeholder: 0 | real but in another town: 0 | not found anywhere: 2
+
+wrote results/core_rag/results_sealion-v3-8b_core_rag_scored.csv and results/core_rag/results_sealion-v3-8b_core_rag_handcheck.csv

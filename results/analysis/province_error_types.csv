@@ -1,0 +1,5 @@
+model,different region,not a real province,"right region, wrong province"
+gemma4-12b,74.3,5.6,20.1
+llama3.1-8b,61.3,22.7,16.0
+qwen3.5-9b,84.7,0.9,14.4
+sealion-v3-8b,29.6,46.9,23.5

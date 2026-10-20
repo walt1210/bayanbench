@@ -1,0 +1,4 @@
+,log10_pop,income_num,urban_share
+log10_pop,1.0,-0.63,0.7
+income_num,-0.63,1.0,-0.37
+urban_share,0.7,-0.37,1.0

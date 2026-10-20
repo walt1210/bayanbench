@@ -1,0 +1,14 @@
+1825 scored answers from results_gemini-3.6-flash-batch25_core.jsonl
+
+outcome         abstained  correct  outdated  wrong
+qtype                                              
+barangay_count        0.0     98.0       0.0    2.0
+name_barangays        0.5     51.7       0.0   47.8
+province              0.0    100.0       0.0    0.0
+region                0.0     97.5       2.5    0.0
+unit_type             0.0    100.0       0.0    0.0
+
+barangay count within 10%: 98.8%
+named barangays: 1194 | real: 927 (specific names: 880) | wrong generic placeholder: 17 | real but in another town: 134 | not found anywhere: 116
+
+wrote results/core/results_gemini-3.6-flash-batch25_core_scored.csv and results/core/results_gemini-3.6-flash-batch25_core_handcheck.csv

@@ -1,0 +1,5 @@
+model,outcome_before,outcome_after
+gemma4-12b,"{'correct': 37, 'wrong': 19, 'outdated': 8, 'abstained': 4}",{'correct': 68}
+llama3.1-8b,"{'correct': 27, 'outdated': 22, 'wrong': 18, 'unreadable': 1}",{'correct': 68}
+qwen3.5-9b,"{'wrong': 53, 'correct': 8, 'outdated': 7}",{'correct': 68}
+sealion-v3-8b,"{'wrong': 26, 'correct': 22, 'outdated': 18, 'abstained': 2}",{'correct': 68}

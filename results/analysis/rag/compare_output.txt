@@ -1,0 +1,69 @@
+ACCURACY BEFORE -> AFTER (percent correct; fixed and broken are answer counts)
+        model          qtype   n  before  after  change  fixed  broken  unknown_after
+   gemma4-12b barangay_count 400     3.0  100.0    97.0    388       0              0
+   gemma4-12b name_barangays 400     3.0   99.2    96.2    385       0              0
+   gemma4-12b       province 308    40.3  100.0    59.7    184       0              0
+   gemma4-12b         region 317    47.9  100.0    52.1    165       0              0
+   gemma4-12b      unit_type 400    95.2  100.0     4.8     19       0              0
+  llama3.1-8b barangay_count 400     7.2  100.0    92.8    371       0              0
+  llama3.1-8b name_barangays 400     0.2   99.2    99.0    396       0              1
+  llama3.1-8b       province 308    70.8   97.7    26.9     87       4              0
+  llama3.1-8b         region 317    66.9  100.0    33.1    105       0              0
+  llama3.1-8b      unit_type 400    97.2  100.0     2.8     11       0              0
+   qwen3.5-9b barangay_count 400     2.5   98.8    96.2    385       0              5
+   qwen3.5-9b name_barangays 400     1.2   99.5    98.2    393       0              0
+   qwen3.5-9b       province 308    21.4  100.0    78.6    242       0              0
+   qwen3.5-9b         region 317    24.6  100.0    75.4    239       0              0
+   qwen3.5-9b      unit_type 400    87.5  100.0    12.5     50       0              0
+sealion-v3-8b barangay_count 400     4.0  100.0    96.0    384       0              0
+sealion-v3-8b name_barangays 400     0.5   98.8    98.2    393       0              3
+sealion-v3-8b       province 308    58.1   99.7    41.6    129       1              0
+sealion-v3-8b         region 317    43.2  100.0    56.8    180       0              0
+sealion-v3-8b      unit_type 400    97.5  100.0     2.5     10       0              0
+
+LOCATION (correct or outdated) BY POPULATION QUINTILE
+              loc_before                         loc_after                            
+pop_quintile           1     2     3     4     5         1      2      3      4      5
+model                                                                                 
+gemma4-12b          14.5  33.3  40.2  54.0  85.1     100.0  100.0  100.0  100.0  100.0
+llama3.1-8b         53.2  65.7  69.6  87.3  96.6      96.8   98.1   99.1  100.0  100.0
+qwen3.5-9b          11.3  13.0  20.5  31.0  52.9     100.0  100.0  100.0  100.0  100.0
+sealion-v3-8b       33.1  44.4  50.9  63.5  78.2      99.2  100.0  100.0  100.0  100.0
+
+GAP: LARGEST minus SMALLEST QUINTILE (percentage points)
+        model  gap_before  gap_after  smallest_before  smallest_after
+  llama3.1-8b        43.3        3.2             53.2            96.8
+sealion-v3-8b        45.1        0.8             33.1            99.2
+   gemma4-12b        70.5        0.0             14.5           100.0
+   qwen3.5-9b        41.6        0.0             11.3           100.0
+
+BY ISLAND GROUP
+              loc_before                  loc_after                 
+island_group       Luzon Mindanao Visayas     Luzon Mindanao Visayas
+model                                                               
+gemma4-12b          55.9     34.4    36.6     100.0    100.0   100.0
+llama3.1-8b         77.5     72.7    68.9      99.1     98.9    98.1
+qwen3.5-9b          35.7     15.8    19.3     100.0    100.0   100.0
+sealion-v3-8b       55.9     50.3    51.6     100.0    100.0    99.4
+
+RECENTLY CHANGED PLACES
+                                                              outcome_before    outcome_after
+model                                                                                        
+gemma4-12b       {'correct': 37, 'wrong': 19, 'outdated': 8, 'abstained': 4}  {'correct': 68}
+llama3.1-8b    {'correct': 27, 'outdated': 22, 'wrong': 18, 'unreadable': 1}  {'correct': 68}
+qwen3.5-9b                        {'wrong': 53, 'correct': 8, 'outdated': 7}  {'correct': 68}
+sealion-v3-8b   {'wrong': 26, 'correct': 22, 'outdated': 18, 'abstained': 2}  {'correct': 68}
+
+BARANGAY NAMES
+        model  pct_specific_before  pct_specific_after  pct_made_up_before  pct_made_up_after
+   gemma4-12b                  5.9                96.4                12.2                0.3
+  llama3.1-8b                  5.7                87.3                32.1                0.2
+   qwen3.5-9b                  1.2                97.0                19.3                0.2
+sealion-v3-8b                  9.2                95.2                23.8                0.2
+
+BARANGAY COUNT WITHIN 10%
+        model  w_before  w_after
+   gemma4-12b      13.5    100.0
+  llama3.1-8b      23.0    100.0
+   qwen3.5-9b       9.0     98.8
+sealion-v3-8b      13.2    100.0

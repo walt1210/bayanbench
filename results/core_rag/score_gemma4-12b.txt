@@ -1,0 +1,14 @@
+1825 scored answers from results_gemma4-12b_core_rag.jsonl
+
+outcome         correct  wrong
+qtype                         
+barangay_count    100.0    0.0
+name_barangays     99.2    0.8
+province          100.0    0.0
+region            100.0    0.0
+unit_type         100.0    0.0
+
+barangay count within 10%: 100.0%
+named barangays: 1197 | real: 1194 (specific names: 1154) | wrong generic placeholder: 0 | real but in another town: 0 | not found anywhere: 3
+
+wrote results/core_rag/results_gemma4-12b_core_rag_scored.csv and results/core_rag/results_gemma4-12b_core_rag_handcheck.csv
