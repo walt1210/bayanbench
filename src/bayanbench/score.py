@@ -90,16 +90,33 @@ def match_barangay(name: str, official: list[str], threshold: float = 0.88) -> s
     return None
 
 
+GENERIC_BARANGAY = re.compile(
+    r"^(?:(?:barangay|brgy|bgy|zone|purok|district|sitio)\s*[0-9ivx]+(?:\s?[a-z])?|poblacion\b.*|[0-9]+)$")
+
+
+def is_generic_barangay(name: str) -> bool:
+    """Placeholder-style names that exist in many towns: 'Brgy. 1', 'Barangay 2', 'Poblacion Proper'.
+
+    Checked on the lowercased, accent-free form, not the normalized one, because
+    normalization removes the word 'barangay'.
+    """
+    t = re.sub(r"[^a-z0-9 ]+", " ", strip_accents(str(name)).lower())
+    t = re.sub(r"\s+", " ", re.sub(r"\(.*?\)", " ", t)).strip()
+    return bool(GENERIC_BARANGAY.match(t))
+
+
 def score_barangays(answers, official: list[str]) -> dict:
     """'Name three barangays in X.' Each name is real (in X) or invented."""
     if is_abstention(answers):
-        return {"outcome": ABSTAINED, "named": 0, "real": 0, "invented": [], "matches": []}
+        return {"outcome": ABSTAINED, "named": 0, "real": 0, "generic": 0, "invented": [], "matches": []}
     if isinstance(answers, str):
         answers = [a.strip() for a in re.split(r"[;,\n]", answers) if a.strip()]
-    seen, real, invented, matches = set(), 0, [], []
+    seen, real, invented, matches, generic = set(), 0, [], [], 0
     for a in answers:
         if is_abstention(a):
             continue
+        if is_generic_barangay(a):
+            generic += 1
         m = match_barangay(a, official)
         if m is None:
             invented.append(a)
@@ -109,5 +126,5 @@ def score_barangays(answers, official: list[str]) -> dict:
             matches.append((a, m))
     named = real + len(invented)
     outcome = CORRECT if named and not invented else (WRONG if invented else ABSTAINED)
-    return {"outcome": outcome, "named": named, "real": real,
+    return {"outcome": outcome, "named": named, "real": real, "generic": generic,
             "invented": invented, "matches": matches}

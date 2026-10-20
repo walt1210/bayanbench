@@ -51,6 +51,8 @@ ROMAN = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 
          "IX": 9, "X": 10, "XI": 11, "XII": 12, "XIII": 13}
 EXTRA_REGION_NAMES = {
     "13": ["NCR", "Metro Manila", "National Capital Region"],
+    "01": ["Ilocos"],
+    "05": ["Bicol"],
     "14": ["CAR", "Cordillera", "Cordillera Administrative Region"],
     "04": ["CALABARZON", "Region IV-A", "Region 4A", "Region 4-A"],
     "17": ["MIMAROPA", "Region IV-B", "Region 4B", "Region 4-B", "Southwestern Tagalog Region"],
@@ -146,7 +148,11 @@ def main(xlsx: str, out_dir: str = "data/processed") -> None:
     lgu["recent_change"] = lgu.apply(recent_change, axis=1)
     lgu["previous_region"] = lgu.apply(
         lambda r: PREVIOUS_REGION.get(r["name"]) or PREVIOUS_REGION.get(r.province), axis=1)
-    lgu["previous_province"] = lgu.province.map(PREVIOUS_PROVINCE)
+    # Official former province names listed in the PSGC "Old names" column
+    # (Western Samar, Compostela Valley, North Cotabato) are also scored as outdated.
+    official_old = {r["name"]: str(r.old_names).strip()
+                    for _, r in df[(df.level == "Prov") & df.old_names.notna()].iterrows()}
+    lgu["previous_province"] = lgu.province.map(lambda p: PREVIOUS_PROVINCE.get(p) or official_old.get(p))
     lgu["region_options"] = lgu.apply(
         lambda r: json.dumps(region_options(r.region_code, r.region)), axis=1)
     lgu["prev_region_options"] = lgu.previous_region.map(

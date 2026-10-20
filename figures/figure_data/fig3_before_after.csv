@@ -1,0 +1,7 @@
+,no_lookup,no_lookup,no_lookup,no_lookup,with_psgc_records,with_psgc_records,with_psgc_records,with_psgc_records
+,Province,Region,Exact barangay count,Three real barangays,Province,Region,Exact barangay count,Three real barangays
+llama3.1-8b,70.8,66.9,7.2,0.2,97.7,100.0,100.0,99.2
+sealion-v3-8b,58.1,43.2,4.0,0.5,99.7,100.0,100.0,98.8
+gemma4-12b,40.3,47.9,3.0,3.0,100.0,100.0,100.0,99.2
+qwen3.5-9b,21.4,24.6,2.5,1.2,100.0,100.0,98.8,99.5
+gemini-3.6-flash-batch25,100.0,97.5,98.0,51.7,,,,

@@ -90,6 +90,14 @@ def main():
     (PROC / "samples.json").write_text(json.dumps(
         {"seed": SEED, "pilot": list(pilot), "core": list(core)}, indent=1))
 
+    # Question-only files for the notebooks: no answers, so models never see them.
+    for name, codes in [("pilot", set(pilot)), ("core", set(core)), ("full", None)]:
+        with open(PROC / f"questions_{name}.jsonl", "w", encoding="utf-8") as f:
+            for q in qs:
+                if codes is None or q["lgu_code"] in codes:
+                    f.write(json.dumps({k: q[k] for k in ("qid", "lgu_code", "qtype", "question")},
+                                       ensure_ascii=False) + "\n")
+
     df = pd.DataFrame(qs)
     print(f"{len(df):,} questions about {df.lgu_code.nunique():,} cities and municipalities")
     print(df.qtype.value_counts().to_string())
